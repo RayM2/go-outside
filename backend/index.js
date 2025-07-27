@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
 import spotsRouter from './routes/spots.js';
 import osmRouter from './routes/osm.js';
+import logsRouter from './routes/logs.js';
+
 
 
 dotenv.config();
@@ -27,6 +29,8 @@ app.get('/', (req, res) => {
 app.use('/api/spots', spotsRouter(supabase));
 app.use('/api', osmRouter(supabase));
 
+app.use('/api/spots', spotsRouter(supabase));
+app.use('/api/logs', logsRouter(supabase));
 
 
 app.listen(PORT, () => {
